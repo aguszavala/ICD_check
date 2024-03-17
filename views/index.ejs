@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ICD lookup</title>
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+        <div>
+        <h1>Know  your diagnosis</h1>
+        <form id="myForm" method="post">            
+            <label for="searchCode">Diagnosis description:</label>
+            <input type="text" name="content">
+
+            <label for="submit">Search</label>
+            <input type="submit" name="Search" formaction="/search">
+        </form>
+        </div>
+        <div>
+            <h1>ICD10 code</h1>
+            
+            <% if(locals.data) {%>
+                <h2>There are <%= numberOfCodes %> ICD10 codes with this description</h2>
+                <% for (let i = 0; i < data.length; i++) { %>
+                    <li><%= data[i][0] %>, <%= data[i][1] %></li>
+                <% } %>
+            <% } %>
+    </body>
+</html>
